@@ -1,11 +1,11 @@
-// backend/utils/getCityCodes.js
 const fs = require('fs');
 const path = require('path');
 
 function getCityCodes() {
-  const filePath = path.join(__dirname, '../../cities.json'); // adjust if needed
-  const cities = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  return cities.map(city => city.CityCode); // assuming JSON has CityCode field
+  const filePath = path.join(__dirname, '../cities.json'); // backend/utils -> ../cities.json
+  const data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  const cities = data.List; // extract the array inside "List"
+  return cities.map(city => city.CityCode);
 }
 
 module.exports = getCityCodes;
